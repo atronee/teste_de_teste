@@ -7,6 +7,8 @@ def cadastrar_ingrediente(tipo, ingrediente, valor):
     :type ingrediemte: string
     :param valor: valor do ingrediente
     :type valor: float
+    :return: dicionário com os ingredientes
+    :return type: dict
     """
     pass
 
@@ -32,6 +34,8 @@ def remover_ingrediente(tipo,ingrediente):
     :type tipo: string
     :param ingrediente: ingrediente
     :type ingrediente: string
+    :return: dicionário com os ingredientes
+    :return type: dict
     """
     pass
 
