@@ -1,3 +1,4 @@
+ingredientes={"massa":dict(), "molho":dict(), "cobertura":dict(), "queijo":dict()}
 def cadastrar_ingrediente(tipo, ingrediente, valor):
     """Cadastrar Ingrediente
     :param tipo: tipo de ingrediente
