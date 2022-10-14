@@ -1,7 +1,9 @@
-import module_quality as mq
+import pizza
 import unittest
+from mock import patch
 
-var_1 = 'This is a variable'
+@patch('pizza.ingredientes', {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
+
 
 def setUpModule():
     print('\nExecuting SetUpModule')
@@ -23,22 +25,26 @@ class TestModuleQuality(unittest.TestCase):
 
     def tearDown(self):
         print('\nExecuting TearDownMethod')
-        
+
+    @patch('pizza.ingredientes', {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
     def test_case_ints_positive_positive(self):
         print('\nExecuting Case Test: Integers - Positive - Positive')
-        self.assertEqual(mq.simplest_func(1, 1), 2)
-
+        self.assertEqual(pizza.cadastrar_ingrediente("massa", "trigo1", 19.342), {'massa': {'trigo': 19.34, 'trigo1': 19.342}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
+    
+    @patch('pizza.ingredientes', {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
     def test_case_ints_negative_negative(self):
         print('\nExecuting Case Test: Integers - Negative - Negative')
-        self.assertEqual(mq.simplest_func(-1, -1), -2)
+        self.assertEqual(pizza.listar_ingredientes("massa"), {'trigo': 19.34})
 
+    @patch('pizza.ingredientes', {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
     def test_case_floats_positive_positive(self):
         print('\nExecuting Case Test: Floats - Positive - Positive')
-        self.assertAlmostEqual(mq.simplest_func(1.0, 1.5), 2.5, 5)
+        self.assertAlmostEqual(pizza.montar_pizzza_valor("trigo", "tomate", "gorgonzola", "pepperoni"), 31.34)
 
+    @patch('pizza.ingredientes', {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {'pepperoni': 5}, 'queijo': {'gorgonzola': 2}})
     def test_case_floats_negative_negative(self):
         print('\nExecuting Case Test: Floats - Negative - Negative')
-        self.assertAlmostEqual(mq.simplest_func(-1.0, -1.5), -2.5, 5)
+        self.assertAlmostEqual(pizza.remover_ingrediente("cobertura", "pepperoni"), {'massa': {'trigo': 19.34}, 'molho': {'tomate': 5}, 'cobertura': {}, 'queijo': {'gorgonzola': 2}})
 
 
 if __name__ == '__main__':
